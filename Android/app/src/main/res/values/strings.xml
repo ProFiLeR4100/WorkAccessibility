@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Work Accessibility</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="nav_drawer_item_sign_in">Войти</string>
+    <string name="nav_drawer_item_sign_out">Выйти</string>
+    <string name="nav_drawer_item_register">Зарегистрироваться</string>
+    <string name="user_not_logged_in">Не авторизован</string>
+
+    <string name="nav_drawer_item_games">Игры</string>
+    <string name="nav_drawer_item_news">Новости</string>
+    <string name="nav_drawer_item_articles">Статьи</string>
+    <string name="nav_drawer_item_video">Видео</string>
+    <string name="nav_drawer_item_live">Трансляции</string>
+    <string name="nav_drawer_item_secrets">Секреты</string>
+    <string name="nav_drawer_item_gallery">Галерея</string>
+    <string name="nav_drawer_item_blogs">Блоги</string>
+    <string name="nav_drawer_item_people">Люди</string>
+    <string name="nav_drawer_item_faq">ЧаВо</string>
+
+</resources>

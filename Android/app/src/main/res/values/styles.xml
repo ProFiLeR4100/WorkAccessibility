@@ -1,0 +1,36 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextIcons</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+
+        <item name="android:windowBackground">@color/colorBackgroundDark</item>
+        <item name="android:colorBackground">@color/colorBackgroundDark</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/colorBackgroundDark</item>
+        <item name="material_drawer_primary_text">@color/colorTextPrimary</item>
+        <item name="material_drawer_primary_icon">@color/colorTextIcons</item>
+        <item name="material_drawer_secondary_text">@color/colorTextSecondary</item>
+        <item name="material_drawer_hint_text">@color/colorTextIcons</item>
+        <item name="material_drawer_divider">@color/colorDividerDark</item>
+        <item name="material_drawer_selected">@color/colorItemSelectedDark</item>
+        <item name="material_drawer_selected_text">@color/colorSelectedItem</item>
+        <item name="material_drawer_header_selection_text">@color/colorTextPrimary</item>
+
+
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextIconsToolbar</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimaryToolbar</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondaryToolbar</item>
+    </style>
+
+
+</resources>

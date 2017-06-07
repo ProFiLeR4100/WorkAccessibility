@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="colorToolbarText">#FFFFFF</color>
+
+
+    <color name="colorPrimary">#E31B25</color>
+    <color name="colorPrimaryDark">#C91821</color>
+    <color name="colorPrimaryLight">#FFCDD2</color>
+    <color name="colorAccent">#607D8B</color>
+    <color name="colorTextPrimary">#F9F8F8</color>
+    <color name="colorTextSecondary">#CECECE</color>
+    <color name="colorTextIcons">#FFFFFF</color>
+    <color name="colorDivider">#B6B6B6</color>
+    <color name="colorSelectedItem">#FC1E29</color>
+    <color name="colorBackgroundDark">#1C1C1C</color>
+    <color name="colorDividerDark">#3F3F3F</color>
+    <color name="colorItemSelectedDark">#171717</color>
+
+    <color name="colorTextPrimaryToolbar">#FFFFFF</color>
+    <color name="colorTextSecondaryToolbar">#FFFFFF</color>
+    <color name="colorTextIconsToolbar">#FFFFFF</color>
+</resources>

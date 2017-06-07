@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                tools:context=".activities.MainActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/containerFragment"
+        android:layout_below="@+id/toolbar">
+    </FrameLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:titleTextColor="@color/colorToolbarText"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:transitionName="actionBar"
+        app:theme="@style/AppTheme.Toolbar"
+        app:popupTheme="@style/AppTheme.Toolbar"
+        android:layout_alignParentTop="true" />
+    <!--
+    android:paddingTop="@dimen/tool_bar_top_padding"
+    -->
+</RelativeLayout>
