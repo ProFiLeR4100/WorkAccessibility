@@ -182,25 +182,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
         // ENDREGION : MAIN FRAGMENT INIT
 
-
-
-
-
-        // REGION :
-        //FontAwesome.Icon.faw_user;
-
-        // ENDREGION :
-
-
-
-        // REGION :
-        // ENDREGION :
-
-
-
-        // REGION :
-        // ENDREGION :
-
         try {
             Map<String, Object> res = vacancyRestService.getAll();
         } catch (Exception ex) {
