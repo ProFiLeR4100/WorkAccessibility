@@ -5,21 +5,26 @@ import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.aatech.WorkAccessibility.adapters.PostAdapter;
+import com.aatech.WorkAccessibility.adapters.VacancyAdapter;
 import com.aatech.WorkAccessibility.fragments.VacanciesFragment;
-import com.aatech.WorkAccessibility.models.Post;
+import com.aatech.WorkAccessibility.models.Vacancy;
 
 import org.androidannotations.annotations.EBean;
+import org.androidannotations.rest.spring.annotations.RestService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @EBean(scope = EBean.Scope.Singleton)
 public class PostsService {
-    private class DownloadPostsTask extends AsyncTask<String, Void, ArrayList<Post>> {
+    @RestService
+    VacancyRestService vacancyRestService;
+    private class DownloadPostsTask extends AsyncTask<String, Void, ArrayList<Vacancy>> {
         RecyclerView view;
         private Context context;
 
@@ -28,39 +33,34 @@ public class PostsService {
             this.view = view;
         }
 
-        protected ArrayList<Post> doInBackground(String... urls) {
-            Document webPage;
+        protected ArrayList<Vacancy> doInBackground(String... urls) {
+            ArrayList<Vacancy> result = new ArrayList<>();
+            List<Map<String, Object>> items = vacancyRestService.getAll();
 
-            try {
-                webPage = Jsoup.connect(urls[0]).get();
-            } catch (IOException ex) {
-                Log.e("Error", ex.getMessage());
-                ex.printStackTrace();
-                return null;
-            }
-
-            ArrayList<Post> result = new ArrayList<>();
-
-            for (Element el : webPage.select(".blog-block")){
-                result.add(new Post(
-                        el.select(".title > a").first().text(),
-                        el.select(".user-name > a").first().text()+", "+el.select(".response-date").first().text(),
-                        el.select(".topic_text").first().text().replace("[далее]",""),
-                        el.select(".topic_text > .media img").first().attr("src")
-                ));
+            for (Map<String, Object> item : items){
+                Vacancy v = new Vacancy();
+                v.setId(item.get("id")!=null ? item.get("id").toString() : "");
+                v.setName(item.get("name")!=null ? item.get("name").toString() : "");
+                v.setDescription(item.get("description")!=null ? item.get("description").toString() : "");
+                v.setCompanyId(item.get("company_id")!=null ? item.get("company_id").toString() : "");
+                v.setDateCreated(item.get("date_created")!=null ? item.get("date_created").toString() : "");
+                v.setDateModified(item.get("date_modified")!=null ? item.get("date_modified").toString() : "");
+                v.setUserId(item.get("user_id")!=null ? item.get("user_id").toString() : "");
+                v.setMinSalary(item.get("min_salary")!=null ? item.get("min_salary").toString() : "");
+                result.add(v);
             }
 
             return result;
         }
 
-        protected void onPostExecute(ArrayList<Post> result) {
+        protected void onPostExecute(ArrayList<Vacancy> result) {
             view.setLayoutManager(VacanciesFragment.vacanciesLayoutManager);
-            PostAdapter adapter = (PostAdapter) view.getAdapter();
+            VacancyAdapter adapter = (VacancyAdapter) view.getAdapter();
             if(view.getAdapter() == null) {
-                adapter = new PostAdapter(context, result);
+                adapter = new VacancyAdapter(context, result);
                 view.setAdapter(adapter);
             } else {
-                adapter.addPosts(result);
+                adapter.addVacancies(result);
             }
         }
     }

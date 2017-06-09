@@ -75,7 +75,8 @@
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
-                    android:layout_marginTop="-4dp"/>
+                    android:layout_marginTop="-4dp"
+                    android:layout_alignParentRight="false" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
@@ -104,134 +105,229 @@
                 android:layout_alignRight="@+id/roundedItemHeader"/>
             <!--android:id="@+id/categoryItemShortText"-->
 
+
             <TextView
-                android:layout_width="fill_parent"
+                android:id="@+id/categoryItemSalaryIcon"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:text="{faw-usd} 20 000 грн"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
-                android:textSize="@dimen/materialize_typography_body1"
-                android:paddingTop="8dp"
-                android:id="@+id/categoryItemSalary"
                 android:layout_below="@+id/roundedItemHeader"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:paddingTop="10dp"
+                android:text="{faw-usd}"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1" />
+
             <TextView
+                android:id="@+id/categoryItemSalary"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/roundedItemHeader"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="20 000 грн"
                 android:textColor="#fff"
-                android:text="{faw-map-marker} Одесса"
+                android:layout_toLeftOf="@+id/categoryItemSalaryIcon"
+                android:textSize="@dimen/materialize_typography_body1"
+                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
+                android:layout_toEndOf="@+id/categoryItemSalaryIcon" />
+
+            <TextView
+                android:id="@+id/categoryItemLocationIcon"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
-                android:textSize="@dimen/materialize_typography_body1"
-                android:paddingTop="8dp"
-                android:id="@+id/categoryItemLocation"
                 android:layout_below="@+id/categoryItemSalary"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:paddingTop="10dp"
+                android:text="{faw-map-marker}"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1" />
             <TextView
+                android:id="@+id/categoryItemLocation"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/categoryItemSalary"
+                android:layout_marginRight="8dp"
+                android:layout_toEndOf="@+id/categoryItemSalaryIcon"
+                android:layout_toLeftOf="@+id/categoryItemLocationIcon"
+                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:text="Одесса"
                 android:textColor="#fff"
-                android:text="{faw-industry} Транспорт и логистика"
+                android:textSize="@dimen/materialize_typography_body1" />
+
+
+            <TextView
+                android:id="@+id/categoryItemIndustryIcon"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:id="@+id/categoryItemIndustry"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
-                android:textSize="@dimen/materialize_typography_body1"
-                android:paddingTop="8dp"
                 android:layout_below="@+id/categoryItemLocation"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:paddingTop="10dp"
+                android:text="{faw-industry}"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1" />
             <TextView
+                android:id="@+id/categoryItemIndustry"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/categoryItemLocation"
+                android:layout_marginRight="8dp"
+                android:layout_toEndOf="@+id/categoryItemSalaryIcon"
+                android:layout_toLeftOf="@+id/categoryItemIndustryIcon"
+                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:text="Транспорт и логистика"
                 android:textColor="#fff"
-                android:text="{faw-user} Сергей"
+                android:textSize="@dimen/materialize_typography_body1" />
+
+
+            <TextView
+                android:id="@+id/categoryItemContactHumanIcon"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
-                android:id="@+id/categoryItemContactHuman"
-                android:textSize="@dimen/materialize_typography_body1"
-                android:paddingTop="8dp"
                 android:layout_below="@+id/categoryItemIndustry"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:paddingTop="10dp"
+                android:text="{faw-user}"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1" />
             <TextView
+                android:id="@+id/categoryItemContactHuman"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/categoryItemIndustry"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="Сергей"
                 android:textColor="#fff"
-                android:text="{faw-phone} +38-000-1234567"
+                android:layout_toLeftOf="@+id/categoryItemContactHumanIcon"
+                android:textSize="@dimen/materialize_typography_body1"
+                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
+                android:layout_toEndOf="@+id/categoryItemSalaryIcon" />
+
+
+            <TextView
+                android:id="@+id/categoryItemContactPhoneIcon"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
-                android:id="@+id/categoryItemContactPhone"
-                android:textSize="@dimen/materialize_typography_body1"
-                android:paddingTop="8dp"
                 android:layout_below="@+id/categoryItemContactHuman"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:paddingTop="10dp"
+                android:text="{faw-phone}"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1" />
             <TextView
+                android:id="@+id/categoryItemContactPhone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="+38-000-1234567"
                 android:textColor="#fff"
-                android:text="{faw-info} Некоторая очень длинная информация"
+                android:textSize="@dimen/materialize_typography_body1"
+                android:layout_below="@+id/categoryItemContactHuman"
+                android:layout_toRightOf="@+id/categoryItemLocationIcon"
+                android:layout_toEndOf="@+id/categoryItemLocationIcon" />
+
+
+            <TextView
+                android:id="@+id/categoryItemDescriptionIcon"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="16dp"
-                android:id="@+id/categoryItemDescription"
-                android:textSize="@dimen/materialize_typography_body1"
-                android:paddingTop="8dp"
                 android:layout_below="@+id/categoryItemContactPhone"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:paddingTop="10dp"
+                android:text="{faw-info}"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1" />
+            <TextView
+                android:id="@+id/categoryItemDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="Некоторая очень длинная информация"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body1"
+                android:layout_alignBaseline="@+id/categoryItemDescriptionIcon"
+                android:layout_alignBottom="@+id/categoryItemDescriptionIcon"
+                android:layout_toRightOf="@+id/categoryItemLocationIcon"
+                android:layout_toEndOf="@+id/categoryItemLocationIcon" />
+
+
+
+
+
+
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:text="{gmd-favorite} {gmd-share} {gmd-plus-one}"
-                android:padding="8dp"
-                android:layout_below="@+id/categoryItemDescription"
                 android:layout_alignParentEnd="false"
-                android:textSize="@dimen/materialize_typography_body2"
-                android:layout_alignParentStart="false"
-                android:layout_marginBottom="8dp"
-                android:layout_alignRight="@+id/categoryItemDescription"
+                android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="false"
-                android:layout_alignParentLeft="false" />
+                android:layout_alignParentStart="false"
+                android:layout_alignRight="@+id/categoryItemDescription"
+                android:layout_below="@+id/categoryItemDescription"
+                android:layout_marginBottom="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="16dp"
+                android:text="Читать полностью"
+                android:textColor="#fff"
+                android:textSize="@dimen/materialize_typography_body2" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

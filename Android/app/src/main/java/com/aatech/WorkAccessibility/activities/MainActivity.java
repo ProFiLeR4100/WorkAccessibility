@@ -182,12 +182,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
         // ENDREGION : MAIN FRAGMENT INIT
 
-        try {
-            Map<String, Object> res = vacancyRestService.getAll();
-        } catch (Exception ex) {
-            Log.e("WorkAccessibility", ex.toString());
-        }
-
     }
 
     //private void checkSingleton(Bundle savedInstanceState) {

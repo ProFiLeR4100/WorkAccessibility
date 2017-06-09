@@ -18,9 +18,6 @@ import android.widget.ImageView;
 
 import com.aatech.WorkAccessibility.R;
 
-/**
- * Created by root on 16.02.2015.
- */
 public class RoundedImageView extends ImageView {
     public int roundedBg;
     public RoundedImageView(Context context) {

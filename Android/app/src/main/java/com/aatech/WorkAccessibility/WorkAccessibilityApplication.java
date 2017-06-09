@@ -20,7 +20,7 @@ public class WorkAccessibilityApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-//        // Post Items Service Initialization
+//        // Vacancy Items Service Initialization
 //        PostsService.checkSingleton();
 
         // Dawer Image Loader Initialization

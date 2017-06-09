@@ -13,9 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Mykhailo on 12.03.2016.
- */
 @SharedPref
 public interface User {
     String email();
