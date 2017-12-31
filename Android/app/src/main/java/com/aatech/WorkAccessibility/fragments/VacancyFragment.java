@@ -1,14 +1,10 @@
 package com.aatech.WorkAccessibility.fragments;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.aatech.WorkAccessibility.R;
 import com.aatech.WorkAccessibility.adapters.VacancyAdapter;
@@ -21,7 +17,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
@@ -29,7 +24,7 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.util.List;
 
 @EFragment(R.layout.recycler_list)
-public class VacanciesFragment extends Fragment {
+public class VacancyFragment extends Fragment {
 
     @Bean
     AdditionalFunctions additionalFunctions;
@@ -38,7 +33,7 @@ public class VacanciesFragment extends Fragment {
 
     public StaggeredGridLayoutManager vacanciesLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
-    public VacanciesFragment() {
+    public VacancyFragment() {
         Bundle bundle = new Bundle();
         this.setArguments(bundle);
     }
@@ -59,11 +54,7 @@ public class VacanciesFragment extends Fragment {
 
     @Background
     public void getPosts(Context context, RecyclerView view, Integer page){
-        try {
-            updatePosts(context, view, vacancyRestService.getAll());
-        } catch (Exception ex) {
-            Log.e("AsyncLoader", ex.toString());
-        }
+//        updatePosts(context, view, vacancyRestService.getById());
     }
 
     @UiThread

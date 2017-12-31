@@ -1,6 +1,7 @@
 package com.aatech.WorkAccessibility.services;
 
 import com.aatech.WorkAccessibility.GlobalVariables;
+import com.aatech.WorkAccessibility.models.Company;
 import com.aatech.WorkAccessibility.models.Vacancy;
 
 import org.androidannotations.rest.spring.annotations.Body;
@@ -16,23 +17,23 @@ import java.util.List;
 import java.util.Map;
 
 @Rest(rootUrl = GlobalVariables.SERVER_HOST, converters = MappingJackson2HttpMessageConverter.class)
-public interface VacancyRestService {
+public interface CompanyRestService {
     // CRUD: Create
-    @Put("/vacancy/rest-create")
-    Map<String, Object> create(@Body Vacancy vacancy);
+    @Put("/company/rest-create")
+    Map<String, Object> create(@Body Company company);
 
     // CRUD: Read
-    @Get("/vacancy/rest-get-all")
-    List<Vacancy> getAll();
+    @Get("/company/rest-get-all")
+    List<Company> getAll();
 
-    @Get("/vacancy/rest-get-by-id?id={id}")
-    Vacancy getById(@Path String id);
+    @Get("/company/rest-get-by-id?id={id}")
+    Company getById(@Path String id);
 
     // CRUD: Update
-    @Patch("/vacancy/rest-update?id={id}")
-    Vacancy update(@Path String id, @Body Vacancy vacancy);
+    @Patch("/company/rest-update?id={id}")
+    Company update(@Path String id, @Body Company company);
 
     // CRUD: Delete
-    @Delete("/vacancy/rest-delete?id={id}")
-    Vacancy delete(@Path String id);
+    @Delete("/company/rest-delete?id={id}")
+    Company delete(@Path String id);
 }

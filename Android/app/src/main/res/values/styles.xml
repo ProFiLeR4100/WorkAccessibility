@@ -13,7 +13,7 @@
         <item name="android:colorBackground">@color/colorBackgroundDark</item>
 
         <!-- MaterialDrawer specific values -->
-        <item name="material_drawer_background">@color/colorBackgroundDark</item>
+        <item name="material_drawer_background">@color/colorItemSelectedDark</item>
         <item name="material_drawer_primary_text">@color/colorTextPrimary</item>
         <item name="material_drawer_primary_icon">@color/colorTextIcons</item>
         <item name="material_drawer_secondary_text">@color/colorTextSecondary</item>

@@ -1,22 +1,25 @@
 package com.aatech.WorkAccessibility.activities;
 
 import android.content.Context;
-import android.os.Debug;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.aatech.WorkAccessibility.R;
+import com.aatech.WorkAccessibility.fragments.AboutFragment_;
+import com.aatech.WorkAccessibility.fragments.CompaniesFragment_;
+import com.aatech.WorkAccessibility.fragments.FavouredVacanciesFragment_;
+import com.aatech.WorkAccessibility.fragments.SearchFragment_;
 import com.aatech.WorkAccessibility.fragments.VacanciesFragment_;
 import com.aatech.WorkAccessibility.models.User_;
 import com.aatech.WorkAccessibility.services.VacancyRestService;
-import com.aatech.WorkAccessibility.services.VacancyRestService_;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.context.IconicsContextWrapper;
+import com.mikepenz.iconics.typeface.IIcon;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -24,13 +27,14 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.StringRes;
 import org.androidannotations.annotations.sharedpreferences.Pref;
-import org.androidannotations.annotations.sharedpreferences.SharedPref;
 import org.androidannotations.rest.spring.annotations.RestService;
 
 import java.util.Map;
@@ -58,49 +62,34 @@ public class MainActivity extends AppCompatActivity {
 
     PrimaryDrawerItem dItemSignIn;
     PrimaryDrawerItem dItemSignUp;
-    PrimaryDrawerItem dItemGames;
-    PrimaryDrawerItem dItemNews;
-    PrimaryDrawerItem dItemArticles;
-    PrimaryDrawerItem dItemVideo;
-    PrimaryDrawerItem dItemLive;
-    PrimaryDrawerItem dItemSecrets;
-    PrimaryDrawerItem dItemGallery;
-    PrimaryDrawerItem dItemBlogs;
-    PrimaryDrawerItem dItemPeople;
-    PrimaryDrawerItem dItemFaq;
+    PrimaryDrawerItem dItemFavouritedVacancies;
+    PrimaryDrawerItem dItemVacancies;
+    PrimaryDrawerItem dItemVacancySearch;
+    PrimaryDrawerItem dItemCompanies;
+    PrimaryDrawerItem dItemAbout;
+    PrimaryDrawerItem dItemCloseDrawer;
     PrimaryDrawerItem dItemSignOut;
 
+    Context ctx;
 
-
-
+    public MainActivity() {
+        dItemSignIn = generateMenuItem("Войти", FontAwesome.Icon.faw_sign_in);
+        dItemSignUp = generateMenuItem("Зарегистрироваться", FontAwesome.Icon.faw_user_plus);
+        dItemFavouritedVacancies = generateMenuItem("Избранные вакансии", FontAwesome.Icon.faw_star);
+        dItemVacancies = generateMenuItem("Все вакансии", FontAwesome.Icon.faw_address_book, true);
+        dItemVacancySearch = generateMenuItem("Поиск вакансий", FontAwesome.Icon.faw_search);
+        dItemCompanies = generateMenuItem("Все компании", FontAwesome.Icon.faw_industry);
+        dItemAbout = generateMenuItem("О приложении", FontAwesome.Icon.faw_info);
+        dItemCloseDrawer = generateMenuItem("Закрыть меню", FontAwesome.Icon.faw_times).withSelectable(false);
+        dItemSignOut = generateMenuItem("Выйти", FontAwesome.Icon.faw_sign_out);
+        ctx = this;
+    }
 
     @AfterViews
     protected void init() {
-//        LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
-
         // REGION : РАБОТАЕМ С ПОЛЬЗОВАТЕЛЕМ
-        user = new User_(this);
+//        user = new User_(this);
         // ENDREGION : РАБОТАЕМ С ПОЛЬЗОВАТЕЛЕМ
-
-        dItemSignIn = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_sign_in).withIcon(FontAwesome.Icon.faw_sign_in).withSetSelected(false);
-        dItemSignUp = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_register).withIcon(FontAwesome.Icon.faw_user_plus);
-        dItemGames = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_games).withIcon(FontAwesome.Icon.faw_gamepad).withSetSelected(true);
-        dItemNews = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_news).withIcon(FontAwesome.Icon.faw_newspaper_o);
-        dItemArticles = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_articles).withIcon(FontAwesome.Icon.faw_file_text_o);
-        dItemVideo = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_video).withIcon(FontAwesome.Icon.faw_video_camera);
-        dItemLive = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_live).withIcon(FontAwesome.Icon.faw_dot_circle_o);
-        dItemSecrets = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_secrets).withIcon(FontAwesome.Icon.faw_user_secret);
-        dItemGallery = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_gallery).withIcon(FontAwesome.Icon.faw_camera);
-        dItemBlogs = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_blogs).withIcon(FontAwesome.Icon.faw_rss);
-        dItemPeople = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_people).withIcon(FontAwesome.Icon.faw_users);
-        dItemFaq = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_faq).withIcon(FontAwesome.Icon.faw_question);
-        dItemSignOut = new PrimaryDrawerItem().withName(R.string.nav_drawer_item_sign_out).withIcon(FontAwesome.Icon.faw_sign_out);
-
-//        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
 
         // REGION : MATERIAL NAV DRAWER
         setSupportActionBar(toolbar);
@@ -112,9 +101,7 @@ public class MainActivity extends AppCompatActivity {
             userDrawerProfile.withIcon(FontAwesome.Icon.faw_user);
         } else {
             userDrawerProfile.withIcon(R.drawable.no_avatar);
-//            userDrawerProfile.withIcon("https://pp.vk.me/c624124/v624124149/4f529/wIIOdtiC7B4.jpg");
         }
-
 
         drawerBuilder = new DrawerBuilder()
                 .withActivity(this)
@@ -127,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
                     .withHeaderBackground(R.drawable.header)
                     .withProfileImagesClickable(true)
                     .withSelectionListEnabledForSingleProfile(false)
-                        .addProfiles(
-                                userDrawerProfile
-                        )
+//                        .addProfiles(
+//                                userDrawerProfile
+//                        )
                     .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                         @Override
                         public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
@@ -152,16 +139,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         drawerBuilder.addDrawerItems(
-            dItemGames,
-            dItemNews,
-            dItemArticles,
-            dItemVideo,
-            dItemLive,
-            dItemSecrets,
-            dItemGallery,
-            dItemBlogs,
-            dItemPeople,
-            dItemFaq
+            dItemFavouritedVacancies,
+            dItemVacancies,
+            dItemVacancySearch,
+            dItemCompanies,
+            dItemAbout,
+            dItemCloseDrawer
         );
 
         if(user.loggedIn().get()) { // Если авторизован, то показать кнопку выхода
@@ -170,22 +153,57 @@ public class MainActivity extends AppCompatActivity {
                 dItemSignOut
             );
         }
+
+        drawerBuilder.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
+                switch(i) {
+                    case 4: // favour
+                        fragmentManager = getSupportFragmentManager();
+                        FavouredVacanciesFragment_ favouredVacanciesFragment = new FavouredVacanciesFragment_();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.containerFragment, favouredVacanciesFragment);
+                        fragmentTransaction.commit();
+                        break;
+                    case 5: // all vacancies
+                        fragmentManager = getSupportFragmentManager();
+                        VacanciesFragment_ vacanciesFragment = new VacanciesFragment_();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.containerFragment, vacanciesFragment);
+                        fragmentTransaction.commit();
+                        break;
+                    case 6: // search
+                        fragmentManager = getSupportFragmentManager();
+                        SearchFragment_ searchFragment = new SearchFragment_();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.containerFragment, searchFragment);
+                        fragmentTransaction.commit();
+                        break;
+                    case 7: // companies
+                        fragmentManager = getSupportFragmentManager();
+                        CompaniesFragment_ companiesFragment = new CompaniesFragment_();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.containerFragment, companiesFragment);
+                        fragmentTransaction.commit();
+                        break;
+                    case 8: // about
+                        fragmentManager = getSupportFragmentManager();
+                        AboutFragment_ aboutFragment = new AboutFragment_();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.containerFragment, aboutFragment);
+                        fragmentTransaction.commit();
+                        break;
+                }
+
+                return false;
+            }
+        });
+
         drawerResult = drawerBuilder.build();
-        drawerResult.setSelection(dItemGames);
+        drawerResult.setSelection(dItemVacancies);
         // ENDREGION : MATERIAL NAV DRAWER
-
-        // REGION : MAIN FRAGMENT INIT
-        fragmentManager = getSupportFragmentManager();
-        VacanciesFragment_ categoriesFragment = new VacanciesFragment_();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.containerFragment, categoriesFragment);
-        fragmentTransaction.commit();
-        // ENDREGION : MAIN FRAGMENT INIT
-
     }
 
-    //private void checkSingleton(Bundle savedInstanceState) {
-    //}
     @Override
     public void onBackPressed(){
         if(drawerResult!=null) {
@@ -200,5 +218,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(IconicsContextWrapper.wrap(newBase));
+    }
+
+    private PrimaryDrawerItem generateMenuItem(String name, IIcon icon) {
+        return generateMenuItem(name, icon, false);
+    }
+
+    private PrimaryDrawerItem generateMenuItem(String name, IIcon icon, boolean selected) {
+        return new PrimaryDrawerItem().withName(name).withIcon(icon).withSetSelected(selected);
     }
 }

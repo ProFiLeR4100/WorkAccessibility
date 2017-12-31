@@ -6,18 +6,18 @@
     <color name="colorToolbarText">#FFFFFF</color>
 
 
-    <color name="colorPrimary">#E31B25</color>
-    <color name="colorPrimaryDark">#C91821</color>
-    <color name="colorPrimaryLight">#FFCDD2</color>
+    <color name="colorPrimary">#60bbd0</color>
+    <color name="colorPrimaryDark">#54a5b8</color>
+    <color name="colorPrimaryLight">#bccdd1</color>
     <color name="colorAccent">#607D8B</color>
-    <color name="colorTextPrimary">#F9F8F8</color>
+    <color name="colorTextPrimary">#333</color>
     <color name="colorTextSecondary">#CECECE</color>
-    <color name="colorTextIcons">#FFFFFF</color>
+    <color name="colorTextIcons">#333</color>
     <color name="colorDivider">#B6B6B6</color>
-    <color name="colorSelectedItem">#FC1E29</color>
-    <color name="colorBackgroundDark">#1C1C1C</color>
-    <color name="colorDividerDark">#3F3F3F</color>
-    <color name="colorItemSelectedDark">#171717</color>
+    <color name="colorSelectedItem">#60bbd0</color>
+    <color name="colorBackgroundDark">#eeefef</color>
+    <color name="colorDividerDark">#CECECE</color>
+    <color name="colorItemSelectedDark">#ffffff</color>
 
     <color name="colorTextPrimaryToolbar">#FFFFFF</color>
     <color name="colorTextSecondaryToolbar">#FFFFFF</color>

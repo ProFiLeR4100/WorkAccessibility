@@ -35,7 +35,7 @@
                     app:cornerRadius="48dp"
                     app:outerBg="@color/colorDividerDark"/>-->
                 <ImageView
-                    android:id="@+id/categoryItemImage"
+                    android:id="@+id/vacancyItemImage"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@drawable/no_avatar"
@@ -70,7 +70,7 @@
                     android:layout_alignParentLeft="false"
                     android:layout_alignParentStart="false"
                     android:layout_alignParentEnd="false"
-                    android:layout_toRightOf="@+id/categoryItemImage"
+                    android:layout_toRightOf="@+id/vacancyItemImage"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:clickable="false"

@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aatech.WorkAccessibility.R;
-import com.aatech.WorkAccessibility.models.Vacancy;
+import com.aatech.WorkAccessibility.models.Company;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -23,62 +23,76 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder> {
-    private List<Vacancy> vacancies;
+public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.CompanyyViewHolder> {
+    private List<Company> companies;
     private Context context;
 
-    public VacancyAdapter(Context context, List<Vacancy> vacancies){
+    public CompanyAdapter(Context context, List<Company> companies){
         this.context = context;
-        this.vacancies = vacancies;
+        this.companies = companies;
     }
 
-    public void addVacancy(Vacancy vacancy) {
-        vacancies.add(vacancy);
+    public void addCompany(Company company) {
+        companies.add(company);
         this.notifyDataSetChanged();
     }
 
-    public void addVacancies(List<Vacancy> vacancies) {
-        this.vacancies.addAll(vacancies);
+    public void addCompanies(List<Company> companies) {
+        this.companies.addAll(companies);
         this.notifyDataSetChanged();
     }
 
-    public void clearVacancies() {
-        this.vacancies.clear();
+    public void clearCompanies() {
+        this.companies.clear();
         this.notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return vacancies !=null ? vacancies.size() : 0;
+        return companies !=null ? companies.size() : 0;
     }
 
     @Override
-    public VacancyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vacancy_holder, viewGroup, false);
-        VacancyViewHolder vacancyViewHolder = new VacancyViewHolder(v);
-        return vacancyViewHolder;
+    public CompanyyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.company_holder, viewGroup, false);
+        CompanyyViewHolder companyyViewHolder = new CompanyyViewHolder(v);
+        return companyyViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(VacancyViewHolder vacancyViewHolder, int i) {
-        Vacancy vacancy = vacancies.get(i);
+    public void onBindViewHolder(CompanyyViewHolder companyyViewHolder, int i) {
+        Company company = companies.get(i);
+
+        String description = company.getDescription();
+        if(description!=null)
+            description = description.replaceAll("\\n"," ");
 
         // Setting Text Data
-        vacancyViewHolder.categoryItemSalary.setText(vacancy.getMin_salary() + "грн.");
-        vacancyViewHolder.categoryItemIndustry.setText(vacancy.getCompany_name() + " (" + vacancy.getIndustry() + ")");
-        vacancyViewHolder.categoryItemContactHuman.setText(vacancy.getUsername());
-        vacancyViewHolder.categoryItemContactPhone.setText(vacancy.getEmail());
-        vacancyViewHolder.categoryItemDescription.setText(vacancy.getDescription().replaceAll("\\n"," "));
-        vacancyViewHolder.categoryItemDate.setText(vacancy.getDate_created());
-        vacancyViewHolder.categoryItemTitle.setText(vacancy.getName());
+        companyyViewHolder.categoryItemIndustry.setText(company.getIndustry());
+        companyyViewHolder.categoryItemContactHuman.setText(company.getUsername());
+        companyyViewHolder.categoryItemContactPhone.setText(company.getEmail());
+        if(description!=null && description.trim().isEmpty()) {
+            companyyViewHolder.categoryItemDescription.setVisibility(View.GONE);
+            companyyViewHolder.categoryItemDescriptionIcon.setVisibility(View.GONE);
+        } else if (description!=null) {
+            companyyViewHolder.categoryItemDescription.setVisibility(View.VISIBLE);
+            companyyViewHolder.categoryItemDescriptionIcon.setVisibility(View.VISIBLE);
+            companyyViewHolder.categoryItemDescription.setText(description);
+        } else {
+            companyyViewHolder.categoryItemDescription.setVisibility(View.GONE);
+            companyyViewHolder.categoryItemDescriptionIcon.setVisibility(View.GONE);
+        }
+
+        companyyViewHolder.categoryItemTitle.setText(company.getName());
+        companyyViewHolder.categoryItemDate.setText(company.getDate_registered());
 
         // Setting Image Data
-        vacancyViewHolder.vacancyItemImagePlaceholder.setImageResource(R.drawable.loader);
-        ((AnimationDrawable) vacancyViewHolder.vacancyItemImagePlaceholder.getDrawable()).start();
-        if (vacancies.get(i).getImage() != null) {
-            String url = vacancies.get(i).getImage();
-            final VacancyViewHolder catItemVH = vacancyViewHolder;
+        companyyViewHolder.vacancyItemImagePlaceholder.setImageResource(R.drawable.loader);
+        ((AnimationDrawable) companyyViewHolder.vacancyItemImagePlaceholder.getDrawable()).start();
+        if (companies.get(i).getImage() != null) {
+            String url = companies.get(i).getImage();
+            final CompanyyViewHolder catItemVH = companyyViewHolder;
             Glide.with(context)
                     .load(url)
                     .placeholder(R.drawable.loader)
@@ -99,19 +113,19 @@ public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.VacancyV
                             return false;
                         }
                     })
-                    .into(vacancyViewHolder.vacancyItemImage);
+                    .into(companyyViewHolder.vacancyItemImage);
 
         } else {
             // make sure Glide doesn't load anything into this view until told otherwise
-            Glide.clear(vacancyViewHolder.vacancyItemImage);
+            Glide.clear(companyyViewHolder.vacancyItemImage);
             // remove the placeholder (optional); read comments below
-            vacancyViewHolder.vacancyItemImage.setImageDrawable(null);
+            companyyViewHolder.vacancyItemImage.setImageDrawable(null);
             // stops the animation
 
-            vacancyViewHolder.vacancyItemImagePlaceholder.setVisibility(View.VISIBLE);
-            vacancyViewHolder.vacancyItemImage.setVisibility(View.INVISIBLE);
+            companyyViewHolder.vacancyItemImagePlaceholder.setVisibility(View.VISIBLE);
+            companyyViewHolder.vacancyItemImage.setVisibility(View.INVISIBLE);
 
-            AnimationDrawable animationDrawable = (AnimationDrawable) vacancyViewHolder.vacancyItemImagePlaceholder.getDrawable();
+            AnimationDrawable animationDrawable = (AnimationDrawable) companyyViewHolder.vacancyItemImagePlaceholder.getDrawable();
             if(animationDrawable != null)
                 animationDrawable.stop();
         }
@@ -121,33 +135,34 @@ public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.VacancyV
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-    public static class VacancyViewHolder extends RecyclerView.ViewHolder {
+    public static class CompanyyViewHolder extends RecyclerView.ViewHolder {
         final CardView cardView;
         final ImageView vacancyItemImage;
         final ImageView vacancyItemImagePlaceholder;
         final RelativeLayout roundedItemHeader;
 
-        final TextView categoryItemSalary;
         final TextView categoryItemIndustry;
         final TextView categoryItemContactHuman;
         final TextView categoryItemContactPhone;
         final TextView categoryItemDescription;
+        final TextView categoryItemDescriptionIcon;
         final TextView categoryItemTitle;
         final TextView categoryItemDate;
 
-        VacancyViewHolder(View itemView){
+
+        CompanyyViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView)itemView.findViewById(R.id.CardContentView);
-            categoryItemDate = (TextView) itemView.findViewById(R.id.categoryItemDate);
             categoryItemTitle = (TextView) itemView.findViewById(R.id.categoryItemTitle);
-            categoryItemSalary = (TextView) itemView.findViewById(R.id.categoryItemSalary);
             categoryItemIndustry = (TextView) itemView.findViewById(R.id.categoryItemIndustry);
             categoryItemContactHuman = (TextView) itemView.findViewById(R.id.categoryItemContactHuman);
             categoryItemContactPhone = (TextView) itemView.findViewById(R.id.categoryItemContactPhone);
             categoryItemDescription = (TextView) itemView.findViewById(R.id.categoryItemDescription);
+            categoryItemDescriptionIcon = (TextView) itemView.findViewById(R.id.categoryItemDescriptionIcon);
             vacancyItemImage = (ImageView)itemView.findViewById(R.id.vacancyItemImage);
             vacancyItemImagePlaceholder = (ImageView)itemView.findViewById(R.id.vacancyItemImagePlaceholder);
             roundedItemHeader = (RelativeLayout)itemView.findViewById(R.id.roundedItemHeader);
+            categoryItemDate = (TextView) itemView.findViewById(R.id.categoryItemDate);
         }
     }
 }

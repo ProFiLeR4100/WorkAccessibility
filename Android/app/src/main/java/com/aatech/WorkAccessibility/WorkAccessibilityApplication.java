@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
-import com.aatech.WorkAccessibility.services.PostsService;
 import com.bumptech.glide.Glide;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
@@ -21,7 +20,7 @@ public class WorkAccessibilityApplication extends Application {
         super.onCreate();
 
 //        // Vacancy Items Service Initialization
-//        PostsService.checkSingleton();
+//        VacancyItemsLoader.checkSingleton();
 
         // Dawer Image Loader Initialization
         DrawerImageLoader.init(new AbstractDrawerImageLoader() {

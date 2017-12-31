@@ -111,44 +111,6 @@
                 android:paddingRight="24dp" />
             <!--android:id="@+id/categoryItemShortText"-->
 
-
-            <TextView
-                android:id="@+id/categoryItemSalaryIcon"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="false"
-                android:layout_below="@+id/roundedItemHeader"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:paddingTop="10dp"
-                android:text="{faw-usd}"
-                android:textAlignment="center"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="@dimen/materialize_typography_body1" />
-
-            <TextView
-                android:id="@+id/categoryItemSalary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="false"
-                android:layout_below="@+id/roundedItemHeader"
-                android:layout_marginRight="8dp"
-                android:layout_toEndOf="@+id/categoryItemSalaryIcon"
-                android:layout_toLeftOf="@+id/categoryItemSalaryIcon"
-                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
-                android:gravity="fill"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp"
-                android:text="20 000 грн"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="@dimen/materialize_typography_body1" />
-
-
             <TextView
                 android:id="@+id/categoryItemIndustryIcon"
                 android:layout_width="30dp"
@@ -156,7 +118,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="false"
-                android:layout_below="@+id/categoryItemSalary"
+                android:layout_below="@+id/roundedItemHeader"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:paddingTop="10dp"
@@ -172,12 +134,12 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
-                android:layout_below="@+id/categoryItemSalary"
+                android:layout_below="@+id/roundedItemHeader"
                 android:layout_gravity="fill"
                 android:layout_marginRight="8dp"
-                android:layout_toEndOf="@+id/categoryItemSalaryIcon"
+                android:layout_toEndOf="@+id/categoryItemIndustryIcon"
                 android:layout_toLeftOf="@+id/categoryItemIndustryIcon"
-                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
+                android:layout_toRightOf="@+id/categoryItemIndustryIcon"
                 android:layout_toStartOf="@+id/categoryItemIndustryIcon"
                 android:paddingLeft="8dp"
                 android:paddingStart="8dp"
@@ -214,9 +176,9 @@
                 android:layout_gravity="fill"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_toEndOf="@+id/categoryItemSalaryIcon"
+                android:layout_toEndOf="@+id/categoryItemContactHumanIcon"
                 android:layout_toLeftOf="@+id/categoryItemContactHumanIcon"
-                android:layout_toRightOf="@+id/categoryItemSalaryIcon"
+                android:layout_toRightOf="@+id/categoryItemContactHumanIcon"
                 android:layout_toStartOf="@+id/categoryItemContactHumanIcon"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"

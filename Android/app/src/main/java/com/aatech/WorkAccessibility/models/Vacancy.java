@@ -8,11 +8,56 @@ public class Vacancy {
     private String id;
     private String name;
     private String description;
-    private String companyId;
-    private String dateCreated;
-    private String dateModified;
-    private String userId;
-    private String minSalary;
+    private String company_id;
+    private String date_created;
+    private String date_modified;
+    private String user_id;
+    private String min_salary;
+    private String image;
+    private String username;
+    private String email;
+    private String company_name;
+    private String industry;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getId() {
         return id;
@@ -38,43 +83,43 @@ public class Vacancy {
         this.description = description;
     }
 
-    public String getCompanyId() {
-        return companyId;
+    public String getCompany_id() {
+        return company_id;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId;
+    public void setCompany_id(String company_id) {
+        this.company_id = company_id;
     }
 
-    public String getDateCreated() {
-        return dateCreated;
+    public String getDate_created() {
+        return date_created;
     }
 
-    public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDate_created(String date_created) {
+        this.date_created = date_created;
     }
 
-    public String getDateModified() {
-        return dateModified;
+    public String getDate_modified() {
+        return date_modified;
     }
 
-    public void setDateModified(String dateModified) {
-        this.dateModified = dateModified;
+    public void setDate_modified(String date_modified) {
+        this.date_modified = date_modified;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getMinSalary() {
-        return minSalary;
+    public String getMin_salary() {
+        return min_salary;
     }
 
-    public void setMinSalary(String minSalary) {
-        this.minSalary = minSalary;
+    public void setMin_salary(String min_salary) {
+        this.min_salary = min_salary;
     }
 }
